@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <section class="section__main">
+      <a href="#" class="logo"
+        ><img src="./assets/img/logo.png" alt="logo"
+      /></a>
+      <div class="main">
+        <p class="text">Estimated BPH Prescriptions written during AUA:</p>
+        <div class="counter">
+          <p class="counter__num" id="counter">0</p>
+          <p class="counter__text">…and counting</p>
+
+          <div class="counter__controls">
+            <button
+              class="btn"
+              id="pauseBtn"
+              onclick="togglePause()"
+              title="Pause"
+            >
+              <!-- Pause icon (two vertical bars) -->
+              <svg
+                id="pauseIcon"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5013 15.8337C12.043 15.8337 11.6507 15.6706 11.3246 15.3445C10.9985 15.0184 10.8352 14.6259 10.8346 14.167V5.83366C10.8346 5.37533 10.998 4.9831 11.3246 4.65699C11.6513 4.33088 12.0435 4.16755 12.5013 4.16699H14.168C14.6263 4.16699 15.0188 4.33033 15.3455 4.65699C15.6721 4.98366 15.8352 5.37588 15.8346 5.83366V14.167C15.8346 14.6253 15.6716 15.0178 15.3455 15.3445C15.0194 15.6712 14.6269 15.8342 14.168 15.8337H12.5013ZM5.83464 15.8337C5.3763 15.8337 4.98408 15.6706 4.65797 15.3445C4.33186 15.0184 4.16852 14.6259 4.16797 14.167V5.83366C4.16797 5.37533 4.3313 4.9831 4.65797 4.65699C4.98464 4.33088 5.37686 4.16755 5.83464 4.16699H7.5013C7.95964 4.16699 8.35214 4.33033 8.6788 4.65699C9.00547 4.98366 9.16852 5.37588 9.16797 5.83366V14.167C9.16797 14.6253 9.00491 15.0178 8.6788 15.3445C8.35269 15.6712 7.96019 15.8342 7.5013 15.8337H5.83464ZM12.5013 14.167H14.168V5.83366H12.5013V14.167ZM5.83464 14.167H7.5013V5.83366H5.83464V14.167Z"
+                  fill="white"
+                />
+              </svg>
+
+              <!-- Play icon (triangle), hidden by default -->
+              <svg
+                id="playIcon"
+                style="display: none"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.4502 7.49957L7.40018 2.88291C6.96458 2.63137 6.47017 2.49961 5.96717 2.50099C5.46417 2.50237 4.97049 2.63685 4.53628 2.89077C4.10208 3.1447 3.74281 3.50901 3.49497 3.94672C3.24713 4.38443 3.11954 4.87993 3.12518 5.38291V14.6496C3.12518 15.4054 3.42545 16.1303 3.95992 16.6648C4.4944 17.1993 5.21931 17.4996 5.97518 17.4996C6.47554 17.4987 6.96692 17.3665 7.40018 17.1162L15.4502 12.4996C15.8827 12.2492 16.2418 11.8895 16.4915 11.4566C16.7412 11.0237 16.8726 10.5327 16.8726 10.0329C16.8726 9.53314 16.7412 9.04216 16.4915 8.60921C16.2418 8.17627 15.8827 7.81658 15.4502 7.56624V7.49957ZM14.6168 10.9912L6.56685 15.6746C6.38642 15.7768 6.18257 15.8306 5.97518 15.8306C5.76779 15.8306 5.56394 15.7768 5.38351 15.6746C5.20359 15.5707 5.05419 15.4213 4.95033 15.2414C4.84647 15.0614 4.79181 14.8573 4.79185 14.6496V5.34957C4.79181 5.14182 4.84647 4.93772 4.95033 4.75779C5.05419 4.57786 5.20359 4.42845 5.38351 4.32457C5.56455 4.22355 5.76788 4.16914 5.97518 4.16624C6.18229 4.17049 6.38529 4.22482 6.56685 4.32457L14.6168 8.97457C14.7968 9.07841 14.9463 9.2278 15.0502 9.40773C15.1542 9.58766 15.2089 9.79179 15.2089 9.99957C15.2089 10.2074 15.1542 10.4115 15.0502 10.5914C14.9463 10.7713 14.7968 10.9207 14.6168 11.0246V10.9912Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+
+            <button
+              class="btn"
+              id="resetBtn"
+              onclick="resetCounter()"
+              title="Reset"
+            >
+              <!-- Reset icon (circular arrow) -->
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.40948 6.17822C4.33588 4.57937 5.81176 3.37168 7.56232 2.78002C9.31288 2.18836 11.2188 2.25306 12.9252 2.96206C14.6316 3.67106 16.0222 4.97604 16.8381 6.63402C17.6539 8.29201 17.8394 10.19 17.36 11.9746C16.8807 13.7591 15.7691 15.3087 14.2322 16.3347C12.6954 17.3607 10.8381 17.7932 9.00606 17.5516C7.17407 17.3101 5.49228 16.4111 4.27383 15.0219C3.05539 13.6326 2.38334 11.848 2.38281 10.0001"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M7.14546 6.19038H3.33594V2.38086"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <p class="text">
+          A BPH prescription is written every 1.4 seconds. A better path forward
+          starts with treatment beyond chronic medication
+        </p>
+      </div>
+      <p class="text__small">
+        1. Assumes 31,536,000 seconds in a year & 25M BPH prescriptions a year.
+        In 2023 in the US alone Tamsulosin accounted for 22,898,080
+        prescriptions
+        <a href="#" target="_blank"
+          >https://clincalc.com/DrugStats/Drugs/Tamsulosin</a
+        >
+      </p>
+    </section>
+  </body>
+
+  <script src="./assets/js/main.js"></script>
+</html>
