@@ -25,6 +25,15 @@ body {
 a {
   color: var(--colorText);
 }
+sup {
+  color: var(--colorText);
+  font-size: clamp(10px, 1.2vw + 1.8dvh, 42px);
+  text-align: center;
+  line-height: 1.3;
+  @media screen and (width >= 2000px) {
+    font-size: 60px;
+  }
+}
 
 /* Main Styles */
 .section__main {
